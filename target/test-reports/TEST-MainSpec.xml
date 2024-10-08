@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="olakunles-MBP-2.mynet" name="MainSpec" tests="3" errors="0" failures="3" skipped="0" time="0.003" timestamp="2024-10-08T20:53:10">
+          <properties>
+      <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/><property name="java.specification.version" value="11"/><property name="sun.cpu.isalist" value=""/><property name="sun.jnu.encoding" value="UTF-8"/><property name="sun.arch.data.model" value="64"/><property name="java.vendor.url" value="https://openjdk.java.net/"/><property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home/lib"/><property name="sun.java.command" value="/opt/homebrew/Cellar/sbt/1.10.1/libexec/bin/sbt-launch.jar clean compile test"/><property name="jdk.debug" value="release"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="java.version.date" value="2023-01-17"/><property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home"/><property name="file.separator" value="/"/><property name="java.vm.compressedOopsMode" value="Zero based"/><property name="line.separator" value="
+"/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="java.runtime.version" value="11.0.18+9-LTS-195"/><property name="user.name" value="olakunlekuye"/><property name="log4j.ignoreTCL" value="true"/><property name="file.encoding" value="UTF-8"/><property name="java.vendor.version" value="18.9"/><property name="java.io.tmpdir" value="/var/folders/ws/pw34sd9973n8djgy2ncp65480000gn/T/"/><property name="java.version" value="11.0.18"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/><property name="sun.os.patch.level" value="unknown"/><property name="java.library.path" value="/Users/olakunlekuye/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/><property name="java.vendor" value="Oracle Corporation"/><property name="scala.ext.dirs" value="/Users/olakunlekuye/.sbt/1.0/java9-rt-ext-oracle_corporation_11_0_18"/><property name="sun.io.unicode.encoding" value="UnicodeBig"/><property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="gopherProxySet" value="false"/><property name="java.class.path" value="/opt/homebrew/Cellar/sbt/1.10.1/libexec/bin/sbt-launch.jar"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="jline.shutdownhook" value="false"/><property name="user.timezone" value="Europe/London"/><property name="os.name" value="Mac OS X"/><property name="java.vm.specification.version" value="11"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="user.country" value="GB"/><property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="sun.cpu.endian" value="little"/><property name="user.home" value="/Users/olakunlekuye"/><property name="user.language" value="en"/><property name="sbt.script" value="/opt/homebrew/Cellar/sbt/1.10.1/libexec/bin/sbt"/><property name="sbt.ipcsocket.tmpdir" value="/var/folders/ws/pw34sd9973n8djgy2ncp65480000gn/T/.sbt934ba451/ipcsocket"/><property name="swoval.tmpdir" value="/var/folders/ws/pw34sd9973n8djgy2ncp65480000gn/T/.sbt934ba451/swoval"/><property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/><property name="jline.esc.timeout" value="0"/><property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="path.separator" value=":"/><property name="os.version" value="14.6.1"/><property name="jna.nosys" value="true"/><property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/><property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/><property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/><property name="user.dir" value="/Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer"/><property name="os.arch" value="aarch64"/><property name="java.vm.info" value="mixed mode"/><property name="java.vm.version" value="11.0.18+9-LTS-195"/><property name="java.class.version" value="55.0"/>
+    </properties>
+          <testcase classname="MainSpec" name=" - return empty list for dates outside range" time="0.001">
+                      <failure message="  [31m- return empty list for dates outside range[0m
+    [31m✗ [0m[1m[34m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;[0m[0m [31mwas not equal to[0m [1m[34m&quot;[]&quot;[0m[0m
+    [1mbody == [0m[1m[33m&quot;[]&quot;[0m[0m[1m[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:37 [0m
+" type="java.lang.Exception">java.lang.Exception:   [31m- return empty list for dates outside range[0m
+    [31m✗ [0m[1m[34m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;[0m[0m [31mwas not equal to[0m [1m[34m&quot;[]&quot;[0m[0m
+    [1mbody == [0m[1m[33m&quot;[]&quot;[0m[0m[1m[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:37 [0m
+
+	at zio.test.sbt.ZTestEvent$.convertEvent(ZTestEvent.scala:34)
+	at zio.test.sbt.ZTestEventHandlerSbt.handle$$anonfun$1(ZTestEventHandlerSbt.scala:25)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:15)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:10)
+	at zio.UnsafeVersionSpecific.implicitFunctionIsFunction$$anonfun$1(UnsafeVersionSpecific.scala:27)
+	at zio.Unsafe$.unsafe(Unsafe.scala:37)
+	at zio.ZIOCompanionVersionSpecific.succeed$$anonfun$1(ZIOCompanionVersionSpecific.scala:185)
+	at zio.internal.FiberRuntime.runLoop(FiberRuntime.scala:904)
+	at zio.internal.FiberRuntime.evaluateEffect(FiberRuntime.scala:381)
+	at zio.internal.FiberRuntime.evaluateMessageWhileSuspended(FiberRuntime.scala:504)
+	at zio.internal.FiberRuntime.drainQueueOnCurrentThread(FiberRuntime.scala:220)
+	at zio.internal.FiberRuntime.run(FiberRuntime.scala:139)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</failure>
+                    </testcase><testcase classname="MainSpec" name=" - handle missing or invalid date parameters" time="0.001">
+                      <failure message="  [31m- handle missing or invalid date parameters[0m
+    [31m✗ [0m[1m[34mInternalServerError()[0m[0m [31mwas not equal to[0m [1m[34mBadRequest()[0m[0m
+    [1mresponse.status == [0m[1m[33mStatus.BadRequest[0m[0m[1m[0m
+    [2m.status = [0mInternalServerError()
+    [2mresponse = [0mzio.http.Response$BasicResponse$$anon$1@f67e4b80
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:46 [0m
+" type="java.lang.Exception">java.lang.Exception:   [31m- handle missing or invalid date parameters[0m
+    [31m✗ [0m[1m[34mInternalServerError()[0m[0m [31mwas not equal to[0m [1m[34mBadRequest()[0m[0m
+    [1mresponse.status == [0m[1m[33mStatus.BadRequest[0m[0m[1m[0m
+    [2m.status = [0mInternalServerError()
+    [2mresponse = [0mzio.http.Response$BasicResponse$$anon$1@f67e4b80
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:46 [0m
+
+	at zio.test.sbt.ZTestEvent$.convertEvent(ZTestEvent.scala:34)
+	at zio.test.sbt.ZTestEventHandlerSbt.handle$$anonfun$1(ZTestEventHandlerSbt.scala:25)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:15)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:10)
+	at zio.UnsafeVersionSpecific.implicitFunctionIsFunction$$anonfun$1(UnsafeVersionSpecific.scala:27)
+	at zio.Unsafe$.unsafe(Unsafe.scala:37)
+	at zio.ZIOCompanionVersionSpecific.succeed$$anonfun$1(ZIOCompanionVersionSpecific.scala:185)
+	at zio.internal.FiberRuntime.runLoop(FiberRuntime.scala:904)
+	at zio.internal.FiberRuntime.evaluateEffect(FiberRuntime.scala:381)
+	at zio.internal.FiberRuntime.evaluateMessageWhileSuspended(FiberRuntime.scala:504)
+	at zio.internal.FiberRuntime.drainQueueOnCurrentThread(FiberRuntime.scala:220)
+	at zio.internal.FiberRuntime.run(FiberRuntime.scala:139)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</failure>
+                    </testcase><testcase classname="MainSpec" name=" - filter trades within date range" time="0.001">
+                      <failure message="  [31m- filter trades within date range[0m
+    [31m✗ [0m[1m[34mInternalServerError()[0m[0m [31mwas not equal to[0m [1m[34mOk()[0m[0m
+    [1mresponse.status == [0m[1m[33mStatus.Ok[0m[0m[1m[0m
+    [2m.status = [0mInternalServerError()
+    [2mresponse = [0mzio.http.Response$BasicResponse$$anon$1@4fd4923e
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:24 [0m
+    [31m✗ Result was false[0m
+    [1mbody[0m[1m[33m.contains(&quot;EUR/USD&quot;)[0m[0m[1m[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:25 [0m
+    [31m✗ Result was false[0m
+    [1mbody[0m[1m[33m.contains(&quot;2023-01-02&quot;)[0m[0m[1m || body.contains(&quot;2023-01-03&quot;)[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:26 [0m
+    [31m✗ Result was false[0m
+    [1mbody.contains(&quot;2023-01-02&quot;) || body[0m[1m[33m.contains(&quot;2023-01-03&quot;)[0m[0m[1m[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:26 [0m
+" type="java.lang.Exception">java.lang.Exception:   [31m- filter trades within date range[0m
+    [31m✗ [0m[1m[34mInternalServerError()[0m[0m [31mwas not equal to[0m [1m[34mOk()[0m[0m
+    [1mresponse.status == [0m[1m[33mStatus.Ok[0m[0m[1m[0m
+    [2m.status = [0mInternalServerError()
+    [2mresponse = [0mzio.http.Response$BasicResponse$$anon$1@4fd4923e
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:24 [0m
+    [31m✗ Result was false[0m
+    [1mbody[0m[1m[33m.contains(&quot;EUR/USD&quot;)[0m[0m[1m[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:25 [0m
+    [31m✗ Result was false[0m
+    [1mbody[0m[1m[33m.contains(&quot;2023-01-02&quot;)[0m[0m[1m || body.contains(&quot;2023-01-03&quot;)[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:26 [0m
+    [31m✗ Result was false[0m
+    [1mbody.contains(&quot;2023-01-02&quot;) || body[0m[1m[33m.contains(&quot;2023-01-03&quot;)[0m[0m[1m[0m
+    [2mbody = [0m&quot;Error: java.io.FileNotFoundException: TradesData.json not found in resources&quot;
+    [36mat /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/test/scala/MainSpec.scala:26 [0m
+
+	at zio.test.sbt.ZTestEvent$.convertEvent(ZTestEvent.scala:34)
+	at zio.test.sbt.ZTestEventHandlerSbt.handle$$anonfun$1(ZTestEventHandlerSbt.scala:25)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:15)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:10)
+	at zio.UnsafeVersionSpecific.implicitFunctionIsFunction$$anonfun$1(UnsafeVersionSpecific.scala:27)
+	at zio.Unsafe$.unsafe(Unsafe.scala:37)
+	at zio.ZIOCompanionVersionSpecific.succeed$$anonfun$1(ZIOCompanionVersionSpecific.scala:185)
+	at zio.internal.FiberRuntime.runLoop(FiberRuntime.scala:904)
+	at zio.internal.FiberRuntime.evaluateEffect(FiberRuntime.scala:381)
+	at zio.internal.FiberRuntime.evaluateMessageWhileSuspended(FiberRuntime.scala:504)
+	at zio.internal.FiberRuntime.drainQueueOnCurrentThread(FiberRuntime.scala:220)
+	at zio.internal.FiberRuntime.run(FiberRuntime.scala:139)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</failure>
+                    </testcase>
+          <system-out><![CDATA[]]></system-out>
+          <system-err><![CDATA[]]></system-err>
+        </testsuite>
