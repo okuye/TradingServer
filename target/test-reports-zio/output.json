@@ -1,20 +1,20 @@
 {
   "results": [
     {
-       "name" : "MainSpec/MainSpec/return empty list for dates outside range",
-       "status" : "Failure",
-       "durationMillis" : "1",
-       "annotations" : "",
-       "fullyQualifiedClassName" : "MainSpec",
-       "labels" : ["MainSpec", "return empty list for dates outside range"]
-    },
-    {
        "name" : "MainSpec/MainSpec/handle missing or invalid date parameters",
        "status" : "Failure",
        "durationMillis" : "1",
        "annotations" : "",
        "fullyQualifiedClassName" : "MainSpec",
        "labels" : ["MainSpec", "handle missing or invalid date parameters"]
+    },
+    {
+       "name" : "MainSpec/MainSpec/return empty list for dates outside range",
+       "status" : "Failure",
+       "durationMillis" : "1",
+       "annotations" : "",
+       "fullyQualifiedClassName" : "MainSpec",
+       "labels" : ["MainSpec", "return empty list for dates outside range"]
     },
     {
        "name" : "MainSpec/MainSpec/filter trades within date range",

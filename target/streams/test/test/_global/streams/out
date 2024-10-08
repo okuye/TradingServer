@@ -1,4 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(MainSpec, zio.test.sbt.ZioSpecFingerprint$@3c6e485c, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(MainSpec, zio.test.sbt.ZioSpecFingerprint$@72f0119c, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0mCompleted tests[0m
 [0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
 [0m[[0m[31merror[0m] [0m[0m	MainSpec[0m
