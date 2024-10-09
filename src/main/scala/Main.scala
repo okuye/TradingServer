@@ -10,6 +10,29 @@ import scala.util.Try
 
 // Define Trade case class and Json Decoder/Encoder
 case class Trade(symbol: String, date: String, hour: Int, openbid: Double, highbid: Double, lowbid: Double, closebid: Double, openask: Double, highask: Double, lowask: Double, closeask: Double, totalticks: Int)
+
+object Trade {
+  // Custom decoder to map JSON array to Trade object
+  def fromArray(arr: List[String]): Either[String, Trade] = {
+    Try {
+      Trade(
+        symbol = arr(0),
+        date = arr(1),
+        hour = arr(2).toInt,
+        openbid = arr(3).toDouble,
+        highbid = arr(4).toDouble,
+        lowbid = arr(5).toDouble,
+        closebid = arr(6).toDouble,
+        openask = arr(7).toDouble,
+        highask = arr(8).toDouble,
+        lowask = arr(9).toDouble,
+        closeask = arr(10).toDouble,
+        totalticks = arr(11).toInt
+      )
+    }.toEither.left.map(_.getMessage)
+  }
+}
+
 given JsonDecoder[Trade] = DeriveJsonDecoder.gen[Trade]
 given JsonEncoder[Trade] = DeriveJsonEncoder.gen[Trade]
 
@@ -24,9 +47,18 @@ def filterTradesStream(startDate: LocalDate, endDate: LocalDate): ZStream[Any, T
     ZStream
       .fromReader(reader)  // Work directly with Char stream
       .mapChunks(ch => Chunk.single(ch.mkString))  // Combine Char chunks into a single String
-      .via(ZPipeline.splitLines)  // Split the String stream by lines
+      .via(ZPipeline.splitLines)  // Now we can split the lines correctly
       .mapZIO { (line: String) =>
-        ZIO.fromEither(line.fromJson[Trade].left.map(new Exception(_)))  // Parse each line as a Trade
+        // Parse the line assuming it's JSON
+        line.fromJson[List[String]] match {
+          case Right(array) =>
+            Trade.fromArray(array) match {
+              case Right(trade) => ZIO.succeed(trade)
+              case Left(error) => ZIO.fail(new Exception(s"Failed to parse trade from array: $error"))
+            }
+          case Left(error) =>
+            ZIO.fail(new Exception(s"Failed to decode JSON: $error, line: $line"))
+        }
       }
       .filter { trade =>
         val tradeDate = LocalDate.parse(trade.date)
