@@ -1,8 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E007] Type Mismatch Error: /Users/olakunlekuye/Documents/Dev/KLX/demo/TradingServer/src/main/scala/Main.scala:49:11 [0m[0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m49 |[0m      .via(ZPipeline.splitLines)  [34m// Split the String stream by lines[0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m[31m   |[0m           ^^^^^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m   |[0m           Found:    zio.stream.ZPipeline[[1m[31mAny[0m, [1m[31mNothing[0m, [1m[31mString[0m, [1m[31mString[0m][0m
-[0m[[0m[31merror[0m] [0m[0m[31m   |[0m           Required: zio.stream.ZPipeline[[1m[32mNothing[0m, [1m[32mAny[0m, [1m[32mChar[0m, [1m[32mAny[0m][0m
-[0m[[0m[31merror[0m] [0m[0m[31m   |[0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m   |[0m longer explanation available when compiling with `-explain`[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
