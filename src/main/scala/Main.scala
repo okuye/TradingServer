@@ -5,9 +5,9 @@ import zio.stream.*
 
 import java.nio.file.{Files, Paths}
 import java.time.LocalDate
+import scala.math.Ordered.orderingToOrdered
 import scala.util.Try
 
-// Define the Trade case class
 case class Trade(
                   symbol: String,
                   date: String,
@@ -29,7 +29,11 @@ object Trade {
       Trade(
         symbol = arr(0).toString,
         date = arr(1).toString,
-        hour = arr(2).toString.toDouble.toInt,  // Handle hour as a double and convert to int
+        hour = arr(2) match {
+          case d: Double => d.toInt
+          case i: Int => i
+          case other => other.toString.toDouble.toInt
+        },
         openbid = arr(3).toString.toDouble,
         highbid = arr(4).toString.toDouble,
         lowbid = arr(5).toString.toDouble,
@@ -38,29 +42,29 @@ object Trade {
         highask = arr(8).toString.toDouble,
         lowask = arr(9).toString.toDouble,
         closeask = arr(10).toString.toDouble,
-        totalticks = arr(11).toString.toDouble.toInt
+        totalticks = arr(11) match {
+          case d: Double => d.toInt
+          case i: Int => i
+          case other => other.toString.toDouble.toInt
+        }
       )
     }.toEither.left.map(_.getMessage)
   }
 
+  // Add JSON Encoder for Trade
   implicit val encoder: JsonEncoder[Trade] = DeriveJsonEncoder.gen[Trade]
 }
 
-// Define Datatable and DatatableContainer
 case class Datatable(data: List[List[Any]])
 
 object Datatable {
-
-  // Custom decoder for `Any`
   implicit val anyDecoder: JsonDecoder[Any] = JsonDecoder.string.map(_.asInstanceOf[Any])
     .orElse(JsonDecoder.double.map(_.asInstanceOf[Any]))
     .orElse(JsonDecoder.int.map(_.asInstanceOf[Any]))
     .orElse(JsonDecoder.boolean.map(_.asInstanceOf[Any]))
 
-  // Custom decoder for List[List[Any]]
   implicit val listOfListDecoder: JsonDecoder[List[List[Any]]] = JsonDecoder.list(JsonDecoder.list(anyDecoder))
 
-  // Custom decoder for Datatable
   implicit val decoder: JsonDecoder[Datatable] = DeriveJsonDecoder.gen[Datatable]
 }
 
@@ -70,7 +74,6 @@ object DatatableContainer {
   implicit val decoder: JsonDecoder[DatatableContainer] = DeriveJsonDecoder.gen[DatatableContainer]
 }
 
-// Process Trades based on the provided JSON structure
 def processTrades(jsonString: String): ZIO[Any, Throwable, List[Trade]] = {
   ZIO.fromEither(jsonString.fromJson[DatatableContainer].left.map(e => new Exception(e)))
     .flatMap { container =>
@@ -80,36 +83,35 @@ def processTrades(jsonString: String): ZIO[Any, Throwable, List[Trade]] = {
     }
 }
 
-// Filtering stream of trades between date ranges
+
 def filterTradesStream(startDate: LocalDate, endDate: LocalDate): ZStream[Any, Throwable, Trade] = {
   val path = Paths.get("src/main/resources/TradesData.json")
 
   ZStream.scoped {
-    ZIO.fromAutoCloseable(
-      ZIO.attemptBlocking(Files.newBufferedReader(path))
-    )
+    ZIO.fromAutoCloseable(ZIO.attemptBlocking(Files.newBufferedReader(path)))
   }.flatMap { reader =>
     ZStream
-      .fromReader(reader)  // Work directly with Char stream
+      .fromReader(reader)
       .mapChunks(ch => Chunk.single(ch.mkString))  // Combine Char chunks into a single String
-      .via(ZPipeline.splitLines)  // Now we can split the lines correctly
+      .via(ZPipeline.splitLines)  // Split the lines correctly
       .mapZIO { (line: String) =>
-        processTrades(line).map(_.headOption)  // Parsing the trades from each line
+        ZIO.logInfo(s"Processing line: $line") *>
+          processTrades(line)  // Process all trades from each line
       }
-      .collect { case Some(trade) => trade }
+      .mapConcat(identity)  // Flatten the List[Trade] into individual Trade objects
       .filter { trade =>
         val tradeDate = LocalDate.parse(trade.date)
-        (tradeDate.isEqual(startDate) || tradeDate.isAfter(startDate)) &&
-          (tradeDate.isEqual(endDate) || tradeDate.isBefore(endDate))
+        tradeDate >= startDate && tradeDate <= endDate  // Apply date filtering
       }
+      .tap(trade => ZIO.logInfo(s"Filtered trade: $trade"))  // Log filtered trades
   }
 }
 
-// Main entry point to run the HTTP server
+
 object Main extends ZIOAppDefault {
 
   val app = Http.collectZIO[Request] {
-    case req @ Method.GET -> Root / "trades" =>
+    case req @ Method.GET -> Root / "trades" =>  // Replaced !! with Root
       (for {
         startDate <- ZIO.fromOption(req.url.queryParams.get("startDate").flatMap(_.headOption).flatMap(s => Try(LocalDate.parse(s)).toOption))
           .orElseFail(Response.text("Missing or invalid startDate").withStatus(Status.BadRequest))
